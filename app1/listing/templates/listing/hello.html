@@ -1,0 +1,18 @@
+<html>
+<head><title>Merchex</title></head>
+<body>
+<h1>Hello Django !</h1>
+<p>Mes produits sont :<p>
+<ul>
+    <li>{{products.0.name}}</li>
+    <li>{{products.1.name}}</li>
+    <li>{{products.2.name}}</li>
+</ul>
+
+    <p>Mes produits sont :</p>
+    {% for product in products %}
+    {{ product.name }},
+    {% endfor %}
+
+</body>
+</html>

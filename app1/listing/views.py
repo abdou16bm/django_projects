@@ -18,3 +18,11 @@ def hello(request):
             </ul>
     """)
 
+
+
+def helloPattern(request):
+    product = Product.objects.all()
+    return render(request,
+                  'listing/hello.html',
+                  {'products': product})
+
