@@ -11,8 +11,23 @@
 
     <p>Mes produits sont :</p>
     {% for product in products %}
-    {{ product.name }},
+    {{ product.name | upper }},
     {% endfor %}
 
+
+<p>
+    J'ai {{ products|length }} produits.
+</p>
+<p>
+    Donc ..
+    {% if products|length < 5 %}
+        peu de
+    {% elif product|length < 10 %}
+        quelques
+    {% else %}
+        beaucoup de
+    {% endif %}
+        produits.
+</p>
 </body>
 </html>
