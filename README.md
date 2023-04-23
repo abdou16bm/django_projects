@@ -186,3 +186,21 @@ add this code to base.html :
     from listing.models import Type
 
     admin.site.register(Type)
+
+
+
+
+## postgresl using
+1. pip install psycopg2
+2. add to settings.py : 
+
+       'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'PASSWORD': 'root',
+            'HOST': 'localhost',
+            'PORT': '5432'
+        }
+3. create migrations files : python manage.py makemigrations 
+4. execute the migration to created on database : python manage.py migrate 
