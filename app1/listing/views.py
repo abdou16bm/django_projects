@@ -44,6 +44,12 @@ def productDetail(request,id):
                   {'product': product})
 
 
+def productDelete(request,id):
+    product = Product.objects.get(id=id)
+    product.delete()
+    return redirect('/product/list')
+
+
 def productAdd(request):
     print('La méthode de requête est : ', request.method)
     print('Les données POST sont : ', request.POST)
