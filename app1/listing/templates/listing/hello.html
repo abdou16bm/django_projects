@@ -1,33 +1,34 @@
-<html>
-<head><title>Merchex</title></head>
-<body>
-<h1>Hello Django !</h1>
-<p>Mes produits sont :<p>
-<ul>
-    <li>{{products.0.name}}</li>
-    <li>{{products.1.name}}</li>
-    <li>{{products.2.name}}</li>
-</ul>
+{% extends 'listing/base.html' %}
 
-    <p>Mes produits sont :</p>
-    {% for product in products %}
-    {{ product.name | upper }},
-    {% endfor %}
+{% block content %}
+
+    <h1>Hello Django !</h1>
+    <p>Mes produits sont :<p>
+    <ul>
+        <li>{{products.0.name}}</li>
+        <li>{{products.1.name}}</li>
+        <li>{{products.2.name}}</li>
+    </ul>
+
+        <p>Mes produits sont :</p>
+        {% for product in products %}
+        {{ product.name | upper }},
+        {% endfor %}
 
 
-<p>
-    J'ai {{ products|length }} produits.
-</p>
-<p>
-    Donc ..
-    {% if products|length < 5 %}
-        peu de
-    {% elif product|length < 10 %}
-        quelques
-    {% else %}
-        beaucoup de
-    {% endif %}
-        produits.
-</p>
-</body>
-</html>
+    <p>
+        J'ai {{ products|length }} produits.
+    </p>
+    <p>
+        Donc ..
+        {% if products|length < 5 %}
+            peu de
+        {% elif product|length < 10 %}
+            quelques
+        {% else %}
+            beaucoup de
+        {% endif %}
+            produits.
+    </p>
+
+{% endblock %}
