@@ -228,3 +228,46 @@ add this code to base.html :
 
     
 ### form add product :
+1. create file app1/listing/form.py :
+    
+    from django import forms
+    from .models import Product
+    
+    class producAddForm(forms.ModelForm):
+      class Meta:
+        model = Product
+        fields = ["name", "date_in",]
+        labels = {'name': "Name", "date_in": "date",}
+2. create template : productAdd.html
+   
+    {% extends 'listing/base.html' %}
+    
+    {% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p  }}
+        <input type="submit" value="AJOUTER">
+    </form>
+    
+    {% endblock %}
+
+3. add URL :   path('product/add', views.productAdd),
+4. add view productAdd:
+
+    def productAdd(request):
+        print('La méthode de requête est : ', request.method)
+        print('Les données POST sont : ', request.POST)
+    
+    
+        if request.method == "POST":
+            form = producAddForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('/product/list')
+        else:
+            form = producAddForm()
+    
+        return render(request,
+                      'listing/productAdd.html',
+                      {'form': form})
+    
