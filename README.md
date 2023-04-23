@@ -66,10 +66,10 @@ Activate.ps1
 
 
 2. use migrations commandes :
-		python manage.py makemigrations
-		python manage.py migrate
+3. create migrations files : python manage.py makemigrations 
+4. execute the migration to created on database : python manage.py migrate 
 
-3. test model with django shell :
+5. test model with django shell :
 
     python manage.py shell
 
@@ -87,5 +87,63 @@ Activate.ps1
 
     product
     <Product: Product object (3)>
+
+
+### create view template : create file listing/template/listing/hello.html and base.html
+1. Add hello.html : 
+
+ {% extends 'listing/base.html' %}
+    {% block content %}
+        <h1>Hello Django !</h1>
+        <p>Mes produits sont :<p>
+        <ul>
+            <li>{{products.0.name}}</li>
+            <li>{{products.1.name}}</li>
+            <li>{{products.2.name}}</li>
+        </ul>
+        ....
+        ....
+        ....
+        ...
+        ..
+    {% endblock %}
+
+
+2. add base.html : 
+       <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>app1</title>
+        </head>
+        <body>
+        {% block content %}{% endblock %}
+        </body>
+        </html>
+
+
+3. add views function : open file listing/views.py
+
+    def helloPattern(request):
+        product = Product.objects.all()
+        return render(request,
+                      'listing/hello.html',
+                      {'products': product})
+
+
+
+### add style CSS : create file listing/static/listing/style.css 
+add this code to base.html : 
+
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+        ....
+        ....
+        <link rel="stylesheet" href="{% static 'listing/style.css' %}" />
+        ....
+        ....
+    </html>
+
 
 
