@@ -227,3 +227,4 @@ add this code to base.html :
 3. create page app1/listing/template/listing/productDetail.html
 
     
+### form add product :

@@ -1,0 +1,14 @@
+{% extends 'listing/base.html' %}
+
+{% block content %}
+<a href="/product/add">Nouveau</a>
+    <h1>List des produits</h1>
+    <p>Mes produits sont :<p>
+
+        {% for product in products %}
+        <p>{{ product.name}},
+        <a href="/product/{{ product.id }}">detail</a>
+        {% endfor %}
+</p>
+
+{% endblock %}

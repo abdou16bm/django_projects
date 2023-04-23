@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from listing.models import Product
+from listing.form import producAddForm
 
 # Create your views here.
 
@@ -28,9 +29,35 @@ def helloPattern(request):
 
 
 
+
+def productList(request):
+    product = Product.objects.all()
+    return render(request,
+                  'listing/productList.html',
+                  {'products': product})
+
+
 def productDetail(request,id):
     product = Product.objects.get(id=id)
     return render(request,
                   'listing/productDetail.html',
                   {'product': product})
+
+
+def productAdd(request):
+    print('La méthode de requête est : ', request.method)
+    print('Les données POST sont : ', request.POST)
+
+
+    if request.method == "POST":
+        form = producAddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/product/list')
+    else:
+        form = producAddForm()
+
+    return render(request,
+                  'listing/productAdd.html',
+                  {'form': form})
 

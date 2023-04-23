@@ -22,5 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', views.hello),
     path('hello/pattern', views.helloPattern),
+    path('product/list', views.productList),
+    path('product/add', views.productAdd),
     path('product/<int:id>/', views.productDetail),
 ]
