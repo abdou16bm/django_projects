@@ -159,3 +159,13 @@ add this code to base.html :
     admin.site.register(Product)
 
 4. connect to : http://127.0.0.1:8000/admin 
+
+
+# custum Admin panel
+1. add this class to : listings/admin.py
+
+    class ProductAdmin(admin.ModelAdmin):
+        list_display = ('name', 'category', 'date_in') # liste les champs a afficher
+2. add this argument 'ProductAdmin' to : listings/admin.py
+3. 
+    admin.site.register(Product,ProductAdmin)
