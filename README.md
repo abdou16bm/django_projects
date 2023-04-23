@@ -204,3 +204,26 @@ add this code to base.html :
         }
 3. create migrations files : python manage.py makemigrations 
 4. execute the migration to created on database : python manage.py migrate 
+
+
+### product detail page :
+1. Add 'product/<int:id>/' to urlpatterns = [] in file : app1/urls.py
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('hello/', views.hello),
+        path('hello/pattern', views.helloPattern),
+        path('product/<int:id>/', views.product_detail),
+    ]
+
+2. Add 'productDetail' function to file : app1/listing/views.py
+
+    def productDetail(request,id):
+        product = Product.objects.get(id=id)
+        return render(request,
+                      'listing/productDetail.html',
+                      {'product': product})
+
+3. create page app1/listing/template/listing/productDetail.html
+
+    

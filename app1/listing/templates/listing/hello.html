@@ -13,6 +13,7 @@
         <p>Mes produits sont :</p>
         {% for product in products %}
         {{ product.name | upper }},
+        <a href="/product/{{ product.id }}">detail</a>
         {% endfor %}
 
 

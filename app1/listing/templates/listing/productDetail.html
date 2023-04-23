@@ -1,0 +1,12 @@
+{% extends 'listing/base.html' %}
+
+{% block content %}
+
+    <h1>Detail produit</h1>
+
+    <ul>
+        <li>{{product.name}} {{product.category.name}}</li>
+        <li>{{product.date_in}}</li>
+    </ul>
+
+{% endblock %}

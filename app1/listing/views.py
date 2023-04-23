@@ -26,3 +26,11 @@ def helloPattern(request):
                   'listing/hello.html',
                   {'products': product})
 
+
+
+def productDetail(request,id):
+    product = Product.objects.get(id=id)
+    return render(request,
+                  'listing/productDetail.html',
+                  {'product': product})
+
