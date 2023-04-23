@@ -169,3 +169,20 @@ add this code to base.html :
 2. add this argument 'ProductAdmin' to : listings/admin.py
 3. 
     admin.site.register(Product,ProductAdmin)
+
+
+# add foreign key
+1. add this class to model : 
+
+    class Type (models.Model):
+        name = models.fields.CharField(max_length=100)
+    
+2. add foregn key to class product with this line : 
+
+     category = models.ForeignKey(Type, null=True, on_delete=models.SET_NULL)
+
+3. add this to : : listings/admin.py
+    
+    from listing.models import Type
+
+    admin.site.register(Type)
