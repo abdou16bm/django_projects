@@ -147,3 +147,15 @@ add this code to base.html :
 
 
 
+# Activate Admin panel
+1. execute : python manage.py createsuperuser
+2. username : admin, password : admin
+3. add this lines to : listings/admin.py
+
+    from django.contrib import admin
+    
+    from listing.models import Product
+    
+    admin.site.register(Product)
+
+4. connect to : http://127.0.0.1:8000/admin 
