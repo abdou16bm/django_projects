@@ -1,0 +1,11 @@
+{% extends 'listing/base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="name" name="name" id="name">
+    <input type="text" placeholder="date_in" name="date_in" id="date_in">
+    <input type="submit" value="AJOUTER">
+</form>
+
+{% endblock %}

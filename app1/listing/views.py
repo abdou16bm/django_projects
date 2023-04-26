@@ -86,3 +86,25 @@ def productUpdate(request, id):
     return render(request,
                   'listing/productUpdate.html',
                   {'form': form})
+
+
+def productAddSimple(request):
+    print('La méthode de requête 2 est : ', request.method)
+    print('Les données POST sont : ', request.POST)
+
+
+    if request.method == "POST":
+        print('POST add simple')
+        print('Les données POST name : ', request.POST["name"])
+        product = Product()
+        product.name = request.POST["name"]
+        product.date_in = request.POST["date_in"]
+
+        product.save();
+
+        return redirect('/product/list')
+    else:
+        return render(request,
+                      'listing/productAddSimple.html')
+
+
