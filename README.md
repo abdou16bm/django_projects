@@ -270,4 +270,44 @@ add this code to base.html :
         return render(request,
                       'listing/productAdd.html',
                       {'form': form})
+
+
+### form update product : edit (get data to form)
+1. create file app1/listing/form.py :
+
+   from django import forms
+   from .models import Product
+
+   class producAddForm(forms.ModelForm):
+   class Meta:
+   model = Product
+   fields = ["name", "date_in",]
+   labels = {'name': "Name", "date_in": "date",}
+2. create template : productUpdate.html
+
+   {% extends 'listing/base.html' %}
+
+   {% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p  }}
+        <input type="submit" value="AJOUTER">
+    </form>
+
+   {% endblock %}
+
+3. add URL :   path('product/<int:id>/edit', views.productUpdate),
+4. add view productUpdate:
     
+    def productUpdate(request, id):
+        product = Product.objects.get(id=id)
+        form = producAddForm(instance=product)
+        return render(request,
+        'listing/productUpdate.html',
+        {'form': form})
+
+
+### form update product : save data form
+1. update view productUpdate:
+
+

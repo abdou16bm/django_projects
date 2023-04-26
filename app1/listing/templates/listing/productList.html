@@ -6,8 +6,10 @@
     <p>Mes produits sont :<p>
 
         {% for product in products %}
-        <p>{{ product.name}},
+        <p>{{ product.id }} {{ product.name}},
         <a href="/product/{{ product.id }}">detail</a>
+<!--        <a href="/product/{{ product.id }}/edit">modifier</a>-->
+        <a href="{% url 'product-edit' product.id %}">modifier</a>
         <a href="/product/{{ product.id }}/delete">supprimer</a>
         {% endfor %}
 </p>
